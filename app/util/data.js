@@ -2,11 +2,11 @@ export const real = [
     {
         id:"1",
         name:"kirmada",
-        age:"unlimited",
+        age:9999999999999999999,
     },{
         id:"2",
         name:"krishna",
-        age:"unlimited",
+        age:9999999999999999999999999999999999999999999999999999999999999999999999999999999999,
     },{
         id:"3",
         name:"chota bheem",
