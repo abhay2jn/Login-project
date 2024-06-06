@@ -1,6 +1,6 @@
 import { real } from "@/app/util/data";
 import { NextResponse } from "next/server";
-import { Result } from "postcss";
+import fs from "fs";
 
 
 export async function GET(_,res) {
@@ -25,4 +25,26 @@ export async function POST(req,res) {
     } else {
         return NextResponse.json({ result : "Invalid"});
     }
+}
+
+export async function DELETE(req,res) {
+    const { id } = await res.params;
+
+    const userIndex = real.findIndex((user) => user.id === id);
+
+    if(userIndex === -1) {
+        return NextResponse.json({result : "User not found"}, { status : 404});
+    }
+
+
+real.splice(userIndex, 1);
+
+
+const updatedUsersArray = real;
+
+const updatedData = JSON.stringify(updatedUsersArray,null,2);
+
+fs.writeFileSync("./app/util/data.js",`export const real = ${updatedData};`,"utf-8");
+
+return NextResponse.json({success: "Successfully deleted the user"});
 }
