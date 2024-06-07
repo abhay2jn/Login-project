@@ -8,12 +8,12 @@ import fs from 'fs';
 }
 
 export async function POST(req,res) {
-    let { id,name,email,password } = await req.json();
+    let { id,name,age,email,password } = await req.json();
 
-    if(!id || !name || !email || !password) {
+    if(!id || !name || !age || !email || !password) {
         return NextResponse.json( {result: "field required"}, {status:401});
     } else {
-        real.push({id,name,email,password});
+        real.push({id,name,age,email,password});
 
         const updatedUsersArray = real;
 
@@ -26,7 +26,7 @@ export async function POST(req,res) {
 }
 
 export async function PUT(req,res) {
-    let { id,name,email,password } = await req.json();
+    let { id,name,age,email,password } = await req.json();
 
     const userIndex = real.findIndex((user) => user.id === id);
 
@@ -36,6 +36,9 @@ export async function PUT(req,res) {
    
     if (name) {
         real[userIndex].name = name;
+    }
+    if (age) {
+        real[userIndex].age = age;
     }
     if (email) {
         real[userIndex].email = email;
