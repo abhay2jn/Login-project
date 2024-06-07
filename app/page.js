@@ -18,4 +18,4 @@ function page() {
 }
 
 export default page;
-// onClick={() => router.push("about")} first method
+/* onClick={() => router.push("about")} first method  */

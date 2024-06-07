@@ -51,7 +51,7 @@ export async function PUT(req,res) {
 
         fs.writeFileSync("./app/util/data.js",`export const real = ${updatedData};`,"utf-8");
 
-        return NextResponse.json({success: "Successfully updated user data"});
+        return NextResponse.json({success: "Successfully updated User data"});
 }
 
 
